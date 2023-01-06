@@ -21,9 +21,9 @@ pipeline{
                 echo "========executing Deploy========"
                 script{
                     
-                    sh(script:"ssh   ubuntu@35.173.211.162 \"mkdir -p /home/ubuntu/prometheus-grafena-2/ \" ")
+                    sh(script:"ssh -o StrictHostKeyChecking=no   ubuntu@35.173.211.162 \"mkdir -p /home/ubuntu/prometheus-grafena-2/ \" ")
                     sh(script:"scp -r ${WORKSPACE}/* ubuntu@35.173.211.162:/home/ubuntu/prometheus-grafena-2/ ")
-                    sh(script:"ssh  ubuntu@35.173.211.162 \"cd /home/ubuntu/prometheus-grafena-2/ && sudo docker-compose up -d \" ")
+                    sh(script:"ssh -o StrictHostKeyChecking=no  ubuntu@35.173.211.162 \"cd /home/ubuntu/prometheus-grafena-2/ && sudo docker-compose up -d \" ")
                 }
                 
             }
@@ -33,7 +33,7 @@ pipeline{
             steps{
                 echo "========executing Status========"
                 script{
-                    sh(script: "ssh   ubuntu@35.173.211.162 \n")
+                    sh(script: "ssh -o StrictHostKeyChecking=no   ubuntu@35.173.211.162 \n")
                     sh '''#!/bin/bash
                        RUN1=`docker-compose ps -q prometheus`
                        RUN2=`docker-compose ps -q grafana`
