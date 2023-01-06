@@ -23,7 +23,7 @@ pipeline{
                     
                     sh(script:"ssh   ubuntu@35.173.211.162 \"mkdir -p /home/ubuntu/prometheus-grafena-2/ \" ")
                     sh(script:"scp -r ${WORKSPACE}/* ubuntu@35.173.211.162:/home/ubuntu/prometheus-grafena-2/ ")
-                    sh(script:"ssh -o StrictHostKeyChecking=no  ubuntu@35.173.211.162 \"cd /home/ubuntu/prometheus-grafena-2/ && sudo docker-compose up -d \" ")
+                    sh(script:"ssh  ubuntu@35.173.211.162 \"cd /home/ubuntu/prometheus-grafena-2/ && sudo docker-compose up -d \" ")
                 }
                 
             }
